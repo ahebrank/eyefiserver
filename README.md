@@ -6,27 +6,27 @@ From Jeff Tchang's [EyeFiServer 2.0](https://github.com/tachang/EyeFiServer), si
 
 **NOTE: Never copy-paste commands starting with `sudo` from a GitHub README.  Make sure you know what you're doing.**
 
-### Find your card's upload key (see http://support.photosmithapp.com/knowledgebase/articles/116903-why-do-i-see-multiple-eye-fi-card-upload-keys-ho) and paste it into settings.ini
+1. [Find your card's upload key](http://support.photosmithapp.com/knowledgebase/articles/116903-why-do-i-see-multiple-eye-fi-card-upload-keys-ho) and paste it into settings.ini
 
-### Copy this directory to /usr/local/eyefiserver:
+2. Copy this directory to /usr/local/eyefiserver:
 
-```bash
-cd ..
-sudo cp -R eyefiserver /usr/local/
-```
+    ```bash
+    cd ..
+    sudo cp -R eyefiserver /usr/local/
+    ```
 
-### Copy and set up the init script:
+3. Copy and set up the init script:
 
-```bash
-sudo cp eyefiserver/eyefiserver.initd /etc/init.d/eyefiserver
-sudo chmod 755 /etc/init.d/eyefiserver
-sudo update-rc.d eyefiserver defaults
-```
+    ```bash
+    sudo cp eyefiserver/eyefiserver.initd /etc/init.d/eyefiserver
+    sudo chmod 755 /etc/init.d/eyefiserver
+    sudo update-rc.d eyefiserver defaults
+    ```
 
-### Start it up:
+4. Start it up:
 
-```bash
-sudo service eyefiserver start
-```
+    ```bash
+    sudo service eyefiserver start
+    ```
 
 If all goes well, great!  If not, please open an issue.
