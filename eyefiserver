@@ -434,10 +434,13 @@ class EyeFiRequestHandler(BaseHTTPRequestHandler):
       eyeFiLogger.debug("Deleting TAR file " + tarFilePath)
       os.remove(tarFilePath)
 
+      imagePath = os.path.join(downloadLocation,imageNames[0])  
+      eyeFiLogger.debug("Adding write permissions on extracted file " + imagePath)
+      os.chmod(imagePath, 0o666)
+
       # Run a command on the file if specified
       if( 'ExecuteOnUpload' in self.server.eyeFiConfiguration['Global'] ):
         command = self.server.eyeFiConfiguration['Global']['ExecuteOnUpload']
-        imagePath = os.path.join(downloadLocation,imageNames[0])      
         eyeFiLogger.debug("Executing command \"" + command + " " + imagePath + "\"")
         pid = subprocess.Popen([command, imagePath]).pid
       
