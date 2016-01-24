@@ -53,7 +53,6 @@ import tempfile
 import datetime
 
 import lib.EyeFiCrypto
-import lib.EyeFiSOAPMessages
 
 """
 General Architecture Notes
@@ -393,7 +392,7 @@ class EyeFiRequestHandler(BaseHTTPRequestHandler):
     untrustedFile.write(form['FILENAME'][0])
         
     # Perform an integrity check on the file before writing it out
-    eyeFiCrypto = EyeFiCrypto.EyeFiCrypto()
+    eyeFiCrypto = lib.EyeFiCrypto.EyeFiCrypto()
     verifiedDigest = eyeFiCrypto.calculateIntegrityDigest(untrustedFile.getvalue(),
                                                           self.server.eyeFiConfiguration['Card']['UploadKey'])
     unverifiedDigest = form['INTEGRITYDIGEST'][0]
