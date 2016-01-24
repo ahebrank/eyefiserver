@@ -1,6 +1,8 @@
 # eyefiserver
 
-From Jeff Tchang's [EyeFiServer 2.0](https://github.com/tachang/EyeFiServer), simplified for a quick Ubuntu installation.
+Based on Jeff Tchang's [EyeFiServer 2.0](https://github.com/tachang/EyeFiServer), simplified for a quick Ubuntu installation with a few minor features added.
+
+This for use with the old-style card.  Mine is an Eye-Fi Share 2GB.
 
 ## Installation
 
