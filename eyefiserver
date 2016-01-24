@@ -417,6 +417,8 @@ class EyeFiRequestHandler(BaseHTTPRequestHandler):
       if( os.path.exists(downloadLocation) == False ):
         eyeFiLogger.debug("Path " + downloadLocation + " does not exist. Creating it.")
         os.makedirs(downloadLocation)
+        eyeFiLogger.debug("Adding write permissions on download path " + downloadLocation)
+        os.chmod(downloadLocation, 0o777)
       
       tarFile = open(tarFilePath,"wb")
       eyeFiLogger.debug("Opened file " + tarFilePath + " for binary writing")
