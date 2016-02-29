@@ -5,27 +5,38 @@ set -e
 
 # Must be a valid filename
 NAME=eyefiserver
+EYEFIROOT=/usr/local/eyefiserver
 PIDFILE=/var/run/$NAME.pid
-DAEMON=/usr/local/eyefiserver/eyefiserver
-DAEMON_OPTS="-c /usr/local/eyefiserver/settings.ini"
+DAEMON=$EYEFIROOT/$NAME
+DAEMON_OPTS="-c $EYEFIROOT/settings.ini"
+LOGFILE=/var/log/$NAME
 
 export PATH="${PATH:+$PATH:}/usr/sbin:/sbin"
+
+start_eyefiserver () { 
+  start-stop-daemon --start --quiet \
+    --make-pidfile --pidfile $PIDFILE --background \
+    --startas /bin/bash -- -c "exec $DAEMON $DAEMON_OPTS > $LOGFILE 2>&1"
+}
+stop_eyefiserver () { 
+  start-stop-daemon --stop --quiet --oknodo --pidfile $PIDFILE 
+}
 
 case "$1" in
   start)
         echo -n "Starting daemon: "$NAME
-        start-stop-daemon --start --quiet --make-pidfile --background --pidfile $PIDFILE --exec $DAEMON -- $DAEMON_OPTS
+        start_eyefiserver
         echo "."
   ;;
   stop)
         echo -n "Stopping daemon: "$NAME
-        start-stop-daemon --stop --quiet --oknodo --pidfile $PIDFILE
+        stop_eyefiserver
         echo "."
   ;;
   restart)
         echo -n "Restarting daemon: "$NAME
-        start-stop-daemon --stop --quiet --oknodo --retry 30 --pidfile $PIDFILE
-        start-stop-daemon --start --quiet --make-pidfile --background --pidfile $PIDFILE --exec $DAEMON -- $DAEMON_OPTS
+        stop_eyefiserver
+        start_eyefiserver
   echo "."
   ;;
 
