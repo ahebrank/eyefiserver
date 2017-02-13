@@ -8,7 +8,7 @@ This for use with the old-style card.  Mine is an Eye-Fi Share 2GB.
 
 **NOTE: Never copy-paste commands starting with `sudo` from a GitHub README.  Make sure you know what you're doing.**
 
-1. [Find your card's upload key]http://web.archive.org/web/20160520145844/http://support.photosmithapp.com/knowledgebase/articles/116903-why-do-i-see-multiple-eye-fi-card-upload-keys-ho and paste it into settings.ini
+1. [Find your card's upload key](http://web.archive.org/web/20160520145844/http://support.photosmithapp.com/knowledgebase/articles/116903-why-do-i-see-multiple-eye-fi-card-upload-keys-ho) and paste it into settings.ini
 
 2. Copy this directory to /usr/local/eyefiserver:
 
